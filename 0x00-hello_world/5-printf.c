@@ -1,7 +1,14 @@
 #include <stdio.h>
-
-int main() {
+/**
+ * main - display text
+ *
+ * Return: 0
+ */
+int main(void)
+{
 	char str[] = "with proper grammar, but the outcome is a piece of art,\n";
+
 	printf("%s", str);
-	return 0;
+
+	return (0);
 }
