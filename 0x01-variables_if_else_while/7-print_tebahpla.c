@@ -12,10 +12,8 @@ int main(void)
 
 	unsigned long i;
 
-	for (i = strlen(alphabets); i > 0; --i)
-		putchar(alphabets[i]);
-
-	putchar(alphabets[0]);
+	for (i = strlen(alphabets) + 1; i > 0; --i)
+		putchar(alphabets[i - 1]);
 
 	putchar('\n');
 
