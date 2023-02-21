@@ -78,7 +78,14 @@ int main(void)
     	_putchar('0' + r);
     	_putchar('\n'); */
 
-	jack_bauer();
+	/* jack_bauer(); */
+
+	/* times_table(); */
+
+	 int n;
+
+	 n = add(89, 9);
+	printf("%d\n", n);
 	
 	return (0);
 }
