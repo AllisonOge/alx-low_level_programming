@@ -12,7 +12,7 @@ int main(void)
 
 	unsigned long i;
 
-	for(i = 0; i < strlen(text); i++)
+	for (i = 0; i < strlen(text); i++)
 	{
 		_putchar(text[i]);
 	}
