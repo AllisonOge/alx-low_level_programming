@@ -8,7 +8,8 @@
 int main(void)
 {
 	unsigned long n1 = 1, n2 = 2, next, total = 0;
-	while (n1<= 4000000)
+
+	while (n1 <= 4000000)
 	{
 		if (n1 % 2 == 0)
 			total += n1;
