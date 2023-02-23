@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	unsigned long int n1, n2, next, n1_l, n1_f, n2_l, n2_f;
+	unsigned long int n1, n2, next, n1_l, n1_f, n2_l, n2_f, next_l, next_f;
 
 	int i;
 
@@ -32,11 +32,14 @@ int main(void)
 	for (i = 91; i <= 98; i++)
 	{
 		printf("%lu", n1_f + (n1_l / 1000000000));
-		(i < 98) ? printf("%lu, ", n1_l % 1000000000) : printf("%lu\n", n1_l % 1000000000);
-		n2_f = n2_f + n1_f;
-		n1_f = n2_f - n1_f;
-		n2_l = n2_l + n2_l;
-		n1_l = n2_l - n1_l;
+		(i < 98) ? printf("%lu, ", n1_l % 1000000000) :
+			printf("%lu\n", n1_l % 1000000000);
+		next_l = n1_l + n2_l;
+		next_f = n1_f + n2_f;
+		n1_l = n2_l;
+		n1_f = n2_f;
+		n2_l = next_l;
+		n2_f = next_f;
 	}
 
 	return (0);
