@@ -31,10 +31,15 @@ int main(void)
     len = _strlen(str);
     printf("%d\n", len); */
 
+    /* char *str;
+
+    str = "I do not fear computers. I fear the lack of them - Isaac Asimov";
+    _puts(str); */
+
     char *str;
 
     str = "I do not fear computers. I fear the lack of them - Isaac Asimov";
-    _puts(str);
+    print_rev(str);
 
     return (0);
 }
