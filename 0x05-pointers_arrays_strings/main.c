@@ -47,13 +47,18 @@ int main(void)
     rev_string(s);
     printf("%s\n", s); */
 
-    char *str;
+    /* char *str;
 
     str = "0123456789";
     puts2(str);
 
     str = "Holberton!";
-    puts2(str);
+    puts2(str); */
+
+    char *str;
+
+    str = "0123456789";
+    puts_half(str);
 
     return (0);
 }
