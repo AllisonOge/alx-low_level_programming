@@ -34,7 +34,7 @@ int main(void)
     printf("%s", s2);
     printf("%s", ptr); */
 
-    char s1[98];
+    /* char s1[98];
     char *ptr;
     int i;
 
@@ -62,6 +62,13 @@ int main(void)
         }
         printf("0x%02x", s1[i]);
     }
-    printf("\n");
+    printf("\n"); */
+
+    char s1[] = "Hello";
+    char s2[] = "World!";
+
+    printf("%d\n", _strcmp(s1, s2));
+    printf("%d\n", _strcmp(s2, s1));
+    printf("%d\n", _strcmp(s1, s1));
     return (0);
 }
