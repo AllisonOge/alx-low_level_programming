@@ -12,7 +12,7 @@ char *leet(char *s)
 
 	char *p = s;
 
-	char *v = "aAeEiIoOuU";
+	char *v = "aAeEoOtTlL";
 
 	char *code = "4433007711";
 
