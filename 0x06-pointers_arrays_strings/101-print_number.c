@@ -6,12 +6,17 @@
  */
 void print_number(int n)
 {
+	unsigned int nAbs;
+
 	if (n < 0)
 	{
 		_putchar('-');
-		n = -n;
+		nAbs = -n;
+	} else
+	{
+		nAbs = n;
 	}
-	if (n > 9)
-		print_number(n / 10);
-	_putchar(n % 10 + '0');
+	if (nAbs > 9)
+		print_number(nAbs / 10);
+	_putchar(nAbs % 10 + '0');
 }
