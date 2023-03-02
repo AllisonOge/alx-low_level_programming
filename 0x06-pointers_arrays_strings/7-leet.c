@@ -9,22 +9,21 @@
  */
 char *leet(char *s)
 {
+	int i, len = 5;
+
 	char *p = s;
+
+	char *v = "aeiou";
+
+	char *code = "43071";
 
 	for (; *p != '\0'; p++)
 	{
 		*p = tolower(*p);
 
-		if (*p == 'a')
-			*p = '4';
-		else if (*p == 'e')
-			*p = '3';
-		else if (*p == 'i')
-			*p = '0';
-		else if (*p == 'o')
-			*p = '7';
-		else if (*p == 'u')
-			*p = '1';
+		for (i = 0; i < len; i++)
+			if (*p == v[i])
+				*p = code[i];
 	}
 
 	return (s);
