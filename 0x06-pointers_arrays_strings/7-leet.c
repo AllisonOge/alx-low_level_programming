@@ -1,5 +1,4 @@
 #include "main.h"
-#include <ctype.h>
 
 /**
  * leet - encode string into 1337
@@ -9,22 +8,18 @@
  */
 char *leet(char *s)
 {
-	int i, len = 5;
+	int i, len = 10;
 
 	char *p = s;
 
-	char *v = "aeiou";
+	char *v = "aAeEiIoOuU";
 
-	char *code = "43071";
+	char *code = "4433007711";
 
 	for (; *p != '\0'; p++)
-	{
-		*p = tolower(*p);
-
 		for (i = 0; i < len; i++)
 			if (*p == v[i])
 				*p = code[i];
-	}
 
 	return (s);
 }
