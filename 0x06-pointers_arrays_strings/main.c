@@ -98,11 +98,18 @@ int main(void)
     printf("%s", ptr);
     printf("%s", str); */
 
-    char str[] = "Expect the best. Prepare for the worst. Capitalize on what comes.\nhello world! hello-world 0123456hello world\thello world.hello world\n";
+    /* char str[] = "Expect the best. Prepare for the worst. Capitalize on what comes.\nhello world! hello-world 0123456hello world\thello world.hello world\n";
     char *ptr;
 
     ptr = cap_string(str);
     printf("%s", ptr);
-    printf("%s", str);
+    printf("%s", str);*/
+
+    char s[] = "Expect the best. Prepare for the worst. Capitalize on what comes.\n";
+    char *p;
+
+    p = leet(s);
+    printf("%s", p);
+    printf("%s", s);
     return (0);
 }
