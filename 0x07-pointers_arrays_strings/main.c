@@ -94,7 +94,7 @@ int main(void)
     };
     print_chessboard(board); */
 
-    int c3[3][3] = {
+/*    int c3[3][3] = {
         {0, 1, 5},
         {10, 11, 12},
         {1000, 101, 102},
@@ -107,6 +107,13 @@ int main(void)
         {10, 12401, 10452, 11542545, 1214543435},
     };
     print_diagsums((int *)c3, 3);
-    print_diagsums((int *)c5, 5);
+    print_diagsums((int *)c5, 5); */
+
+    char *s0 = "Bob Dylan";
+    char *s1 = "Robert Allen";
+
+    printf("%s, %s\n", s0, s1);
+    set_string(&s1, s0);
+    printf("%s, %s\n", s0, s1);
     return (0);
 }
