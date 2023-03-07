@@ -61,11 +61,18 @@ int main(void)
         printf("%s\n", f);
     } */
 
-    char *s = "hello, world";
+/*    char *s = "hello, world";
     char *f = "oleh";
     unsigned int n;
 
     n = _strspn(s, f);
-    printf("%u\n", n);
+    printf("%u\n", n); */
+
+    char *s = "hello, world";
+    char *f = "world";
+    char *t;
+
+    t = _strpbrk(s, f);
+    printf("%s\n", t);
     return (0);
 }
