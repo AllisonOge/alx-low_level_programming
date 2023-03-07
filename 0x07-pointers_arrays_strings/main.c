@@ -68,11 +68,18 @@ int main(void)
     n = _strspn(s, f);
     printf("%u\n", n); */
 
-    char *s = "hello, world";
+/*    char *s = "hello, world";
     char *f = "world";
     char *t;
 
     t = _strpbrk(s, f);
+    printf("%s\n", t); */
+
+    char *s = "hello, world";
+    char *f = "world";
+    char *t;
+
+    t = _strstr(s, f);
     printf("%s\n", t);
     return (0);
 }
