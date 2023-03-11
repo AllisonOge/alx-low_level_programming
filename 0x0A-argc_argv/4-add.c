@@ -6,7 +6,7 @@
 /**
  * main - adds positive numbers
  * @argc: number of args
- * ~argv: array of pointers to args
+ * @argv: array of pointers to args
  *
  * Return: 0 for success and 1 for error
  */
@@ -16,15 +16,22 @@ int main(int argc, char *argv[])
 	{
 		int i, sum = 0;
 		bool error = false;
+		char *endptr;
 
 		for (i = 1; i < argc; i++)
-			if (isdigit(*argv[i]))
-				sum += atoi(argv[i]);
+		{
+			strtol(argv[i], &endptr, 10);
+			if (*endptr == '\0')
+			{
+				if (atoi(argv[i]) >= 0)
+					sum += atoi(argv[i]);
+			}
 			else
 			{
 				error = true;
 				break;
 			}
+		}
 		if (error)
 		{
 			printf("Error\n");
