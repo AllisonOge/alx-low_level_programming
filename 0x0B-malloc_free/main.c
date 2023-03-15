@@ -47,12 +47,22 @@ int main(void)
     }
     simple_print_buffer(buffer, 98);
     free(buffer); */
-    char *s;
+/*    char *s;
 
     s = _strdup("ALX SE");
     if (s == NULL)
     {
         printf("failed to allocate memory\n");
+        return (1);
+    }
+    printf("%s\n", s);
+    free(s); */
+    char *s;
+
+    s = str_concat("Betty ", "Holberton");
+    if (s == NULL)
+    {
+        printf("failed\n");
         return (1);
     }
     printf("%s\n", s);
