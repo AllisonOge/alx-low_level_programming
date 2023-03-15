@@ -12,15 +12,19 @@
 char *str_concat(char *s1, char *s2)
 {
 	char *concat = NULL;
+	size_t len1 = (s1 != NULL) ? strlen(s1) : 0;
+	size_t len2 = (s2 != NULL) ? strlen(s2) : 0;
 
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
 
-	concat = (char *) malloc(strlen(s1) + strlen(s2) + 1);
+	concat = (char *) malloc(len1 + len2 + 1);
 	if (concat == NULL)
 		return (NULL);
 
-	strcpy(concat, s1);
-	strcat(concat, s2);
+	if (len1 > 0)
+		strcpy(concat, s1);
+	if (len2 > 0)
+		strcat(concat, s2);
 	return (concat);
 }
