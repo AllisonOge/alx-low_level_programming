@@ -62,7 +62,7 @@ void print_grid(int **grid, int width, int height)
  *
  * Return: Always 0.
  */
-int main(void)
+int main(int ac, char *av[])
 {
 /*    char *buffer;
 
@@ -106,7 +106,7 @@ int main(void)
     grid[0][3] = 98;
     grid[3][4] = 402;
     print_grid(grid, 6, 4); */
-    int **grid;
+/*    int **grid;
 
     grid = alloc_grid(6, 4);
     if (grid == NULL)
@@ -118,6 +118,15 @@ int main(void)
     grid[0][3] = 98;
     grid[3][4] = 402;
     print_grid(grid, 6, 4);
-    free_grid(grid, 4);
+    free_grid(grid, 4); */
+    char *s;
+
+    s = argstostr(ac, av);
+    if (s == NULL)
+    {
+        return (1);
+    }
+    printf("%s", s);
+    free(s);
     return (0);
 }
