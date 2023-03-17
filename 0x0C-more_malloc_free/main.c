@@ -11,7 +11,7 @@
  *
  * Return: Nothing.
  */
-void simple_print_buffer(int *buffer, unsigned int size)
+void simple_print_buffer(char *buffer, unsigned int size)
 {
     unsigned int i;
 
@@ -61,10 +61,22 @@ int main(void)
     concat = string_nconcat("Best ", "School !!!", 6);
     printf("%s\n", concat);
     free(concat); */
-    int *a;
+/*    int *a;
 
     a = array_range(0, 10);
     simple_print_buffer(a, 11);
-    free(a);
+    free(a); */
+    char *p;
+    int i;
+
+    p = malloc(sizeof(char) * 10);
+    p = _realloc(p, sizeof(char) * 10, sizeof(char) * 98);
+    i = 0;
+    while (i < 98)
+    {
+        p[i++] = 98;
+    }
+    simple_print_buffer(p, 98);
+    free(p);
     return (0);
 }
