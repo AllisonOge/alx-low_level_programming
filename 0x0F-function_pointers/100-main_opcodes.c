@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * main: print the opcodes of its own main function
+ * main - print the opcodes of its own main function
  * @argc: the number of command line arguments
  * @argv: an array of command line argument strings
  *
