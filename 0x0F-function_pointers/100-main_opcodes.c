@@ -28,7 +28,10 @@ int main(int argc, char *argv[])
 	}
 
 	for (i = 0; i < n_bytes; i++)
-		printf("%.2hhx ", opcodes[i]);
+		if (i == n_bytes - 1)
+			printf("%.2hhx", opcodes[i]);
+		else
+			printf("%.2hhx ", opcodes[i]);
 	printf("\n");
 
 	return (0);
