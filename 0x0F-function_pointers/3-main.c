@@ -33,13 +33,12 @@ int main(int argc, char *argv[])
 
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[3]);
-	result = op_func(num1, num2);
-
 	if ((*op == '/' || *op == '%') && num2 == 0)
 	{
 		printf("Error\n");
 		exit(100);
 	}
+	result = op_func(num1, num2);
 
 	printf("%d\n", result);
 	return (0);
