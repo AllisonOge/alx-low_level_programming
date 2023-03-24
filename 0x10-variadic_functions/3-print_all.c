@@ -19,24 +19,20 @@ void print_all(const char * const format, ...)
 	va_start(ap, format);
 	while (format && i < (int) strlen(format))
 	{
-		/* iterate over arguments and print them comma separated */
+		ignore = false;
 		switch (format[i])
 		{
 			case 'c':
-				ignore = false;
 				printf("%c", va_arg(ap, int));
 				break;
 			case 'i':
-				ignore = false;
 				printf("%d", va_arg(ap, int));
 				break;
 			case 'f':
-				ignore = false;
 				printf("%f", va_arg(ap, double));
 				break;
 			case 's':
 			{
-				ignore = false;
 				s = va_arg(ap, char *);
 				if (s == NULL)
 					s = "(nil)";
@@ -48,7 +44,6 @@ void print_all(const char * const format, ...)
 				ignore = true;
 				break;
 		}
-		/* print a comma after the argument, unless it's the last argument */
 		if (i != (int)strlen(format) - 1 && !ignore)
 			printf(", ");
 		i++;
