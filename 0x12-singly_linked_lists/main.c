@@ -88,7 +88,7 @@ int main(void)
     add_node(&head, "William");
     add_node(&head, "Zee");
     print_list(head); */
-    list_t *head;
+/*    list_t *head;
 
     head = NULL;
     add_node_end(&head, "Anne");
@@ -119,6 +119,17 @@ int main(void)
     add_node_end(&head, "Timothy");
     add_node_end(&head, "Victor");
     add_node_end(&head, "Walton");
+    print_list(head); */
+    list_t *head;
+
+    head = NULL;
+    add_node_end(&head, "Bob");
+    add_node_end(&head, "&");
+    add_node_end(&head, "Kris");
+    add_node_end(&head, "love");
+    add_node_end(&head, "asm");
     print_list(head);
+    free_list(head);
+    head = NULL;
     return (0);
 }
