@@ -136,7 +136,7 @@ int main(void)
     printf("%d\n", node->n);
     print_listint(head);
     free_listint2(&head); */
-    listint_t *head;
+/*    listint_t *head;
     int sum;
 
     head = NULL;
@@ -150,6 +150,22 @@ int main(void)
     add_nodeint_end(&head, 1024);
     sum = sum_listint(head);
     printf("sum = %d\n", sum);
+    free_listint2(&head); */
+    listint_t *head;
+
+    head = NULL;
+    add_nodeint_end(&head, 0);
+    add_nodeint_end(&head, 1);
+    add_nodeint_end(&head, 2);
+    add_nodeint_end(&head, 3);
+    add_nodeint_end(&head, 4);
+    add_nodeint_end(&head, 98);
+    add_nodeint_end(&head, 402);
+    add_nodeint_end(&head, 1024);
+    print_listint(head);
+    printf("-----------------\n");
+    insert_nodeint_at_index(&head, 5, 4096);
+    print_listint(head);
     free_listint2(&head);
     return (0);
 }
