@@ -40,8 +40,6 @@ size_t print_listint_safe(const listint_t *head)
 	}
 
 	/* clean up */
-/*	for(i = 0; i < table_size; i++)
-		free((listint_t *) hash_table[i]); */
 	free(hash_table);
 	return (len);
 }

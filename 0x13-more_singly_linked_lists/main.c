@@ -260,7 +260,7 @@ int main(void)
     add_nodeint(&head, 402);
     add_nodeint(&head, 1024);
     print_listint_safe(head); */
-    listint_t *head;
+/*    listint_t *head;
     listint_t *head2;
     listint_t *node;
 
@@ -286,8 +286,8 @@ int main(void)
     print_listint_safe(head);
     free_listint_safe(&head2);
     free_listint_safe(&head);
-    printf("%p, %p\n", (void *)head2, (void *)head);
-/*    listint_t *head;
+    printf("%p, %p\n", (void *)head2, (void *)head); */
+    listint_t *head;
     listint_t *head2;
     listint_t *node;
 
@@ -325,6 +325,6 @@ int main(void)
     {
         printf("Loop starts at [%p] %d\n", (void *)node, node->n);
     }
-    free_listint_safe(&head); */
+    free_listint_safe(&head);
     return (0);
 }
