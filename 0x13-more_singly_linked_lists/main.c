@@ -236,7 +236,7 @@ int main(void)
     reverse_listint(&head);
     print_listint(head);    
     free_listint2(&head); */
-    listint_t *head;
+/*    listint_t *head;
     listint_t *head2;
     listint_t *node;
 
@@ -259,8 +259,8 @@ int main(void)
     node->next = add_nodeint(&head, 98);
     add_nodeint(&head, 402);
     add_nodeint(&head, 1024);
-    print_listint_safe(head);
-/*    listint_t *head;
+    print_listint_safe(head); */
+    listint_t *head;
     listint_t *head2;
     listint_t *node;
 
@@ -286,7 +286,7 @@ int main(void)
     print_listint_safe(head);
     free_listint_safe(&head2);
     free_listint_safe(&head);
-    printf("%p, %p\n", (void *)head2, (void *)head); */
+    printf("%p, %p\n", (void *)head2, (void *)head);
 /*    listint_t *head;
     listint_t *head2;
     listint_t *node;

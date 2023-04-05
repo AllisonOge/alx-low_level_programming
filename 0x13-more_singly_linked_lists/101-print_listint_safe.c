@@ -10,7 +10,7 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t i, hash, len = 0;
+	size_t hash, len = 0;
 	const listint_t *current = head;
 	/* create a set to store visted nodes */
 	const size_t table_size = 1024;
@@ -39,8 +39,9 @@ size_t print_listint_safe(const listint_t *head)
 		current = current->next;
 	}
 
-	for(i = 0; i < table_size; i++)
-		free((listint_t *) hash_table[i]);
+	/* clean up */
+/*	for(i = 0; i < table_size; i++)
+		free((listint_t *) hash_table[i]); */
 	free(hash_table);
 	return (len);
 }
