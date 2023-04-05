@@ -1,5 +1,6 @@
 #include "lists.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * print_listint_safe - print a listint_t linked list
@@ -9,22 +10,35 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
+	size_t hash, len = 0;
 	const listint_t *current = head;
-	size_t len = 0;
+	/* create a set to store visted nodes */
+	const size_t table_size = 1024;
+	const size_t hash_mask = table_size - 1;
+	const listint_t **hash_table = calloc(table_size, sizeof(*hash_table));
+
+	if (hash_table == NULL)
+		exit(98);
 
 	while (current != NULL)
 	{
+		/* check if the node has been visited before */
+		hash = ((size_t) current) & hash_mask;
+		if (hash_table[hash] == current)
+		{
+			printf("-> [%p] %d\n", (void *) current, current->n);
+			break;
+		}
+
+		/* add the node to the hash table */
+		hash_table[hash] = current;
+
 		printf("[%p] %d\n", (void *) current, current->n);
 		len++;
 
-		/* chech for a loop */
-		if (current > current->next)
-		{
-			printf("-> [%p] %d\n", (void *) current->next, current->next->n);
-			break;
-		}
 		current = current->next;
 	}
 
+	free(hash_table);
 	return (len);
 }
