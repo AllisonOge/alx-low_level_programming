@@ -10,16 +10,16 @@ listint_t *reverse_listint(listint_t **head)
 {
 	listint_t *prev = NULL;
 	listint_t *current = *head;
-	listint_t *next = NULL;
 
 	while (current != NULL)
 	{
-		next = current->next;
-		current->next = prev;
-		prev = current;
-		current = next;
+		*head = current->next;	/* update head to the next node */
+		current->next = prev;	/* reverse the link of the current node */
+		prev = current;	/* move prev to the current node */
+		current = *head;	/* move current to the next node */
 	}
 
+	/* set the head pointer to the last node (previously the tail)*/
 	*head = prev;
 	return (*head);
 }
