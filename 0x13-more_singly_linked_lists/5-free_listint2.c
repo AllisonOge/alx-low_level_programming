@@ -8,6 +8,7 @@
 void free_listint2(listint_t **head)
 {
 	listint_t *current, *temp;
+
 	if (head == NULL || *head == NULL)
 		return;
 
