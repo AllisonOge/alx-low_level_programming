@@ -221,7 +221,7 @@ int main(void)
     printf("-----------------\n");
     delete_nodeint_at_index(&head, 0);
     print_listint(head); */
-/*    listint_t *head;
+    listint_t *head;
 
     head = NULL;
     add_nodeint_end(&head, 0);
@@ -235,7 +235,7 @@ int main(void)
     print_listint(head);
     reverse_listint(&head);
     print_listint(head);    
-    free_listint2(&head); */
+    free_listint2(&head);
 /*    listint_t *head;
     listint_t *head2;
     listint_t *node;
@@ -287,7 +287,7 @@ int main(void)
     free_listint_safe(&head2);
     free_listint_safe(&head);
     printf("%p, %p\n", (void *)head2, (void *)head); */
-    listint_t *head;
+/*    listint_t *head;
     listint_t *head2;
     listint_t *node;
 
@@ -325,6 +325,6 @@ int main(void)
     {
         printf("Loop starts at [%p] %d\n", (void *)node, node->n);
     }
-    free_listint_safe(&head);
+    free_listint_safe(&head); */
     return (0);
 }
