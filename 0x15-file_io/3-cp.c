@@ -77,7 +77,7 @@ int main(int ac, char *av[])
 		dprintf(2, "Usage: %s file_from file_to\n", av[0]);
 		exit(97);
 	}
-	
+
 	if (!av[1])
 	{
 		dprintf(2, "Error: Can't read from file %s\n", av[1]);
