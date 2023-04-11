@@ -9,7 +9,7 @@
 void print_binary(unsigned long int n)
 {
 	/* create a mask to extract each bit */
-	unsigned long int mask; 
+	unsigned long int mask;
 	unsigned long int tmp = n;
 	int len = 0;
 
