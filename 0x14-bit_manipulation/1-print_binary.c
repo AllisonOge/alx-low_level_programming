@@ -8,20 +8,28 @@
  */
 void print_binary(unsigned long int n)
 {
-	char buf[BUFFER_SIZE];
-	int i = 0;
+	/* create a mask to extract each bit */
+	unsigned long int mask; 
+	unsigned long int tmp = n;
+	int len = 0;
 
-	/* extract binary digits from the decimal number */
-	while (n > 0)
+	while (tmp)
 	{
-		buf[i++] = (n & 1) ? '1' : '0';
-		n >>= 1;
+		tmp >>= 1;
+		len++;
 	}
 
-	/* if the decimal is 0, the binary is also 0 */
-	if (i == 0)
-		buf[i++] =  '0';
+	if (n == 0)
+		len = 1;
+	mask = 1ul << (len - 1);
 
-	while (i > 0)
-		_putchar(buf[--i]);
+
+	while (mask)
+	{
+		if (n & mask)
+			_putchar('1');
+		else
+			_putchar('0');
+		mask >>= 1; /* shift the mask to the next bit */
+	}
 }

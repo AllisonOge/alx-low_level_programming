@@ -42,7 +42,7 @@ int main()
   printf("%u\n", n);
   n = binary_to_uint("0000000000000000000110010010");
   printf("%u\n", n);*/
-  /*print_binary(0);
+  print_binary(0);
   printf("\n");
   print_binary(1);
   printf("\n");
@@ -51,7 +51,7 @@ int main()
   print_binary(1024);
   printf("\n");
   print_binary((1 << 10) + 1);
-  printf("\n");*/
+  printf("\n");
   /*int n;
 
   n = get_bit(1024, 10);
@@ -92,7 +92,7 @@ int main()
   printf("%u\n", n);
   n = flip_bits(1024, 1025);
   printf("%u\n", n);*/
-  int n;
+  /*int n;
 
   n = get_endianness();
   if (n != 0)
@@ -102,6 +102,6 @@ int main()
   else
   {
       printf("Big Endian\n");
-  }
+  }*/
   return 0;
 }

@@ -1,8 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define BUFFER_SIZE 1024
-
 unsigned int binary_to_uint(const char *b);
 void print_binary(unsigned long int n);
 extern int _putchar(char c);
