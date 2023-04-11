@@ -29,7 +29,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fd;
 	char buf[BUFFER_SIZE];
-	ssize_t n = 0, bytes_read;
+	ssize_t n = 0, bytes_read, bytes_written;
 
 	if (filename == NULL)
 		return (0);
@@ -43,7 +43,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		if (n + bytes_read > (ssize_t)letters)
 			bytes_read = letters - n;
 
-		if (write(STDIN_FILENO, buf, bytes_read) < 0)
+		bytes_written = write(STDIN_FILENO, buf, bytes_read);
+		if (bytes_written < 0 || bytes_written != bytes_read)
 			return (0);
 
 		n += bytes_read;
