@@ -38,15 +38,16 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (fd < 0)
 		return (0);
 
-	while ((bytes_read = read(fd, buf, BUFFER_SIZE)) > 0)
+	while (n < (ssize_t)letters && (bytes_read = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
+		if (n + bytes_read > (ssize_t)letters)
+			bytes_read = (ssize_t)letters - n;
+
 		bytes_written = write(STDIN_FILENO, buf, bytes_read);
 		if (bytes_written < 0 || bytes_written != bytes_read)
 			return (0);
 
 		n += bytes_read;
-		if (n == (ssize_t)letters)
-			break;
 	}
 
 	if (bytes_read < 0)
