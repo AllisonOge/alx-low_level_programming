@@ -155,6 +155,37 @@ void print_data(unsigned char *e_ident)
 }
 
 /**
+ * print_version - print the version field in the header
+ * @e_ident: feild of the Elf64_Ehdr struct
+ */
+void print_version(unsigned char *e_ident)
+{
+	printf("  Version:                           %d",
+			e_ident[EI_VERSION]);
+	switch (e_ident[EI_VERSION])
+	{
+		case EV_CURRENT:
+			printf(" (current)\n");
+			break;
+		default:
+			printf("\n");
+	}
+}
+
+/**
+ * close_elf - wrapper function to close file and handle errors
+ * @fd: file descriptor
+ */
+void close_elf(int fd)
+{
+	if (close(fd) < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close file %d\n", fd);
+		exit(98);
+	}
+}
+
+/**
  * main - Entry point
  * @ac: number of arguments
  * @av: pointer to pointer to strings
@@ -192,7 +223,7 @@ int main(int ac, char **av)
 	if (n < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", av[1]);
-		close(fd);
+		close_elf(fd);
 		exit(98);
 	}
 
@@ -201,7 +232,9 @@ int main(int ac, char **av)
 	print_magic(ehdr->e_ident);
 	print_class(ehdr->e_ident);
 	print_data(ehdr->e_ident);
+	print_version(ehdr->e_ident);
 
 	free(ehdr);
+	close_elf(fd);
 	return (0);
 }
