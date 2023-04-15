@@ -186,6 +186,116 @@ void close_elf(int fd)
 }
 
 /**
+ * print_osabi - print the OS/ABI field in the header
+ * @e_ident: field of the Elf64_Ehdr struct
+ */
+void print_osabi(unsigned char *e_ident)
+{
+	printf("  OS/ABI:                            ");
+	switch (e_ident[EI_OSABI])
+	{
+		case ELFOSABI_HPUX:
+			printf("UNIX - HP-UX\n");
+			break;
+		case ELFOSABI_NETBSD:
+			printf("UNIX - NetBSD\n");
+			break;
+		case ELFOSABI_LINUX:
+			printf("UNIX - Linux\n");
+			break;
+		case ELFOSABI_SOLARIS:
+			printf("UNIX - Solaris\n");
+			break;
+		case ELFOSABI_IRIX:
+			printf("UNIX - IRIX\n");
+			break;
+		case ELFOSABI_FREEBSD:
+			printf("UNIX - FreeBSD\n");
+			break;
+		case ELFOSABI_TRU64:
+			printf("UNIX - TRU64\n");
+			break;
+		case ELFOSABI_ARM:
+			printf("ARM\n");
+			break;
+		case ELFOSABI_STANDALONE:
+			printf("Standalone App\n");
+			break;
+		case ELFOSABI_NONE:
+			printf("UNIX - System V\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_ident[EI_OSABI]);
+	}
+}
+
+/**
+ * print_abi - print the ABI version field in the header
+ * @e_ident: field of the Elf64_Ehdr struct
+ */
+void print_abi(unsigned char *e_ident)
+{
+	printf("  ABI Version:                       %d\n",
+			e_ident[EI_ABIVERSION]);
+}
+
+/**
+ * print_type - print the type field in the header
+ * @e_type: field of the Elf64_Ehdr struct
+ * @e_ident: field of the Elf64_Ehdr struct
+ */
+void print_type(unsigned int e_type, unsigned char *e_ident)
+{
+	/* if big-endianness order bytes */
+	if (e_ident[EI_DATA] == ELFDATA2MSB)
+		e_type >>= 8;
+	printf("  Type:                              ");
+	switch (e_type)
+	{
+		case ET_NONE:
+			printf("NONE (None)\n");
+			break;
+		case ET_REL:
+			printf("REL (Relocation file)\n");
+			break;
+		case ET_EXEC:
+			printf("EXEC (Executable file)\n");
+			break;
+		case ET_DYN:
+			printf("DYN (Shared object file)\n");
+			break;
+		case ET_CORE:
+			printf("CORE (Core file)\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_type);
+	}
+}
+
+/**
+ * print_entry - prints the entry field in the header
+ * @e_entry: address of the entry point
+ * @e_ident: field of the Elf64_Ehdr struct
+ */
+void print_entry(unsigned long int e_entry, unsigned char *e_ident)
+{
+	printf("  Entry point address:               ");
+	/* if big-endianness order of bytes */
+	if (e_ident[EI_DATA] == ELFDATA2MSB)
+	{
+		e_entry = ((e_entry << 8) & 0xFF00FF00) |
+				((e_entry >> 8) & 0xFF00FF);
+		e_entry = (e_entry << 16) | (e_entry >> 16);
+	}
+	/* print based on operating system bits */
+	if (e_ident[EI_CLASS] == ELFCLASS32)
+		printf("%#x\n", (unsigned int)e_entry);
+	else
+		printf("%#lx\n", e_entry);
+}
+
+
+/**
  * main - Entry point
  * @ac: number of arguments
  * @av: pointer to pointer to strings
@@ -202,7 +312,6 @@ int main(int ac, char **av)
 		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n");
 		exit(98);
 	}
-
 	ehdr = malloc(sizeof(Elf64_Ehdr));
 	if (!ehdr)
 	{
@@ -210,7 +319,6 @@ int main(int ac, char **av)
 		free(ehdr);
 		exit(98);
 	}
-
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 	{
@@ -218,7 +326,6 @@ int main(int ac, char **av)
 				"Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
-
 	n = read(fd, ehdr, sizeof(Elf64_Ehdr));
 	if (n < 0)
 	{
@@ -226,13 +333,16 @@ int main(int ac, char **av)
 		close_elf(fd);
 		exit(98);
 	}
-
 	check_elf(ehdr->e_ident, fd);
 	printf("ELF Header:\n");
 	print_magic(ehdr->e_ident);
 	print_class(ehdr->e_ident);
 	print_data(ehdr->e_ident);
 	print_version(ehdr->e_ident);
+	print_osabi(ehdr->e_ident);
+	print_abi(ehdr->e_ident);
+	print_type(ehdr->e_type, ehdr->e_ident);
+	print_entry(ehdr->e_entry, ehdr->e_ident);
 
 	free(ehdr);
 	close_elf(fd);
