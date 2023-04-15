@@ -43,7 +43,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		if (n + bytes_read > (ssize_t)letters)
 			bytes_read = (ssize_t)letters - n;
 
-		bytes_written = write(STDIN_FILENO, buf, bytes_read);
+		bytes_written = write(STDOUT_FILENO, buf, bytes_read);
 		if (bytes_written < 0 || bytes_written != bytes_read)
 		{
 			close(fd);
