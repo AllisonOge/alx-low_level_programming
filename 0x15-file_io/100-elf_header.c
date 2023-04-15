@@ -90,6 +90,71 @@ void check_elf(unsigned char *e_ident, int fd)
 }
 
 /**
+ * print_magic - print the magic field of header
+ * @e_ident: field of the Elf64_Ehdr struct
+ */
+void print_magic(unsigned char *e_ident)
+{
+	int idx;
+
+	printf("  Magic:   ");
+	for (idx = 0; idx < EI_NIDENT; idx++)
+	{
+		printf("%02x", e_ident[idx]);
+		if (idx == EI_NIDENT - 1)
+			printf("\n");
+		else
+			printf(" ");
+	}
+}
+
+/**
+ * print_class - prints the class field of the header
+ * @e_ident: field of the Elf64_Ehdr struct
+ */
+void print_class(unsigned char *e_ident)
+{
+	printf("  Class:                             ");
+	switch (e_ident[EI_CLASS])
+	{
+		case ELFCLASS32:
+			printf("ELF32\n");
+			break;
+		case ELFCLASS64:
+			printf("ELF64\n");
+			break;
+		case ELFCLASSNONE:
+			printf("none\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+	}
+}
+
+/**
+ * print_data - prints the data field of the header
+ * @e_ident: field of the Elf64_Ehdr struct
+ */
+void print_data(unsigned char *e_ident)
+{
+	printf("  Data:                              ");
+	switch (e_ident[EI_DATA])
+	{
+		case ELFDATA2LSB:
+			printf("2's complement, little-endian\n");
+			break;
+		case ELFDATA2MSB:
+			printf("2's complement, big-endian\n");
+			break;
+		case ELFDATANONE:
+			printf("none\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+	}
+}
+
+/**
  * main - Entry point
  * @ac: number of arguments
  * @av: pointer to pointer to strings
@@ -132,6 +197,10 @@ int main(int ac, char **av)
 	}
 
 	check_elf(ehdr->e_ident, fd);
+	printf("ELF Header:\n");
+	print_magic(ehdr->e_ident);
+	print_class(ehdr->e_ident);
+	print_data(ehdr->e_ident);
 
 	free(ehdr);
 	return (0);
