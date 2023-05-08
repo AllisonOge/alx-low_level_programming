@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#define BUFFER_SIZE 1024
 
 /**
  * read_textfile - reads a text file and prints it the POXIS standard output
