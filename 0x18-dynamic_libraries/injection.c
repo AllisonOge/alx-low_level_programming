@@ -8,8 +8,8 @@
 int atoi(const char *s)
 {
 	((void) s);
-	printf("Congratulations, you win the Jackpot!\n");
 	printf("9 8 10 24 75 -9\n");
+	printf("Congratulations, you win the Jackpot!\n");
 	exit(0);
 	return (0);
 }
