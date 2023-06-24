@@ -1,13 +1,15 @@
-int numbers[] = {9, 8, 10, 24, 75, 9};
+#include <stdlib.h>
+#include <stdio.h>
+
 /**
- * rand - override random generator function to return number combination
- *
- * Return: a sequence of numbers 9 8 10 24 75 9
+ * atoi - inject code for hack
+ * Return: Always 0
  */
-int rand()
+int atoi(const char *s)
 {
-	static int i = 0;
-	int result = numbers[i];
-	i = (i + 1) % 6;
-	return (result - 1);
+	((void) s);
+	printf("Congratulations, you win the Jackpot!\n");
+	printf("9 8 10 24 75 -9\n");
+	exit(0);
+	return (0);
 }
