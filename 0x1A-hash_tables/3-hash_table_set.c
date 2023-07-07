@@ -13,32 +13,52 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int hash_index = key_index((const unsigned char *)key, ht->size);
-	hash_node_t *item = malloc(sizeof(hash_node_t));
+	hash_node_t *item = create_item(key, value);
 
 	if (!item)
 		return (0);
-	if (key == NULL || value == NULL)
+	/* add item to the beginning of hash table */
+	item->next = ht->array[hash_index];
+	ht->array[hash_index] = item;
+	return (1);
+}
+
+/**
+ * create_item - create an item for the hash table
+ * @key: key
+ * @value: value
+ *
+ * Return: created item or NULL if unsuccessful
+ */
+hash_node_t *create_item(const char *key, const char *value)
+{
+	hash_node_t *item = malloc(sizeof(hash_node_t));
+
+	if (!item)
+		return (NULL);
+	if (key == NULL) /* key cannot be NULL */
 	{
 		free(item);
-		return (0);
+		return (NULL);
 	}
 	item->key = malloc(strlen(key) + 1);
 	if (!item->key)
 	{
 		free(item);
-		return (0);
+		return (NULL);
 	}
-	item->value = malloc(strlen(value) + 1);
-	if (!item->value)
+	if (value)
 	{
-		free(item->key);
-		free(item);
-		return (0);
-	}
+		item->value = malloc(strlen(value) + 1);
+		if (!item->value)
+		{
+			free(item->key);
+			free(item);
+			return (NULL);
+		}
+		strcpy(item->value, value);
+	} else
+		item->value = NULL; /* value can be NULL */
 	strcpy(item->key, key);
-	strcpy(item->value, value);
-	/* add item to the beginning of hash table */
-	item->next = ht->array[hash_index];
-	ht->array[hash_index] = item;
-	return (1);
+	return (item);
 }
