@@ -41,24 +41,8 @@ hash_node_t *create_item(const char *key, const char *value)
 		free(item);
 		return (NULL);
 	}
-	item->key = malloc(strlen(key) + 1);
-	if (!item->key)
-	{
-		free(item);
-		return (NULL);
-	}
+	item->key = strdup(key);
 	if (value)
-	{
-		item->value = malloc(strlen(value) + 1);
-		if (!item->value)
-		{
-			free(item->key);
-			free(item);
-			return (NULL);
-		}
-		strcpy(item->value, value);
-	} else
-		item->value = NULL; /* value can be NULL */
-	strcpy(item->key, key);
+		item->value = strdup(value); /* handle null value for value */
 	return (item);
 }
