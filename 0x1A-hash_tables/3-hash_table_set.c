@@ -35,9 +35,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	item = create_item(key, value);
 	if (!item)
 		return (0);
-	/* set the key and value for the new node */
-	item->key = strdup(key);
-	item->value = strdup(value);
 
 	/* add item to the beginning of list */
 	item->next = ht->array[hash_index];
@@ -58,14 +55,13 @@ hash_node_t *create_item(const char *key, const char *value)
 
 	if (!item)
 		return (NULL);
-	if (key == NULL || *key == '\0') /* key cannot be NULL */
+	if (key == NULL 
+		|| value == NULL || *key == '\0') /* key or value cannot be NULL */
 	{
 		free(item);
 		return (NULL);
 	}
 	item->key = strdup(key);
-	item->value = NULL;
-	if (value)
-		item->value = strdup(value); /* handle null value for value */
+	item->value = strdup(value);
 	return (item);
 }
