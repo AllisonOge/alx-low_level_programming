@@ -20,14 +20,16 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	if (ht->array[hash_index])
 	{
 		if (strcmp(key, ht->array[hash_index]->key) == 0)
+		{
 			return (ht->array[hash_index]->value);
+		}
 		else
 		{
 			current = ht->array[hash_index];
 			while (current)
 			{
 				if (strcmp(key, current->key) == 0)
-					return current->value;
+					return (current->value);
 				current = current->next;
 			}
 		}
