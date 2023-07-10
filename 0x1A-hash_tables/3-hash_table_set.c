@@ -12,11 +12,12 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int hash_index = key_index((const unsigned char *)key, ht->size);
+	unsigned long int hash_index;  
 	hash_node_t *item, *current;
 
 	if (ht == NULL)
 		return (0);
+	hash_index = key_index((const unsigned char *)key, ht->size);
 	/* check if the key already exists in the hash table */
 	current = ht->array[hash_index];
 	while (current)
