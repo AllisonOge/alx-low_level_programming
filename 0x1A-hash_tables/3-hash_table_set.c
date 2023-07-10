@@ -12,7 +12,7 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int hash_index;  
+	unsigned long int hash_index;
 	hash_node_t *item, *current;
 
 	if (ht == NULL)
@@ -56,7 +56,7 @@ hash_node_t *create_item(const char *key, const char *value)
 
 	if (!item)
 		return (NULL);
-	if (key == NULL 
+	if (key == NULL
 		|| value == NULL || *key == '\0') /* key or value cannot be NULL */
 	{
 		free(item);
