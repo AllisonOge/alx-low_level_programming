@@ -69,6 +69,19 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	item->next = ht->array[index];
 	ht->array[index] = item;
 	/* add the item to the sorted list */
+	sorted_list_add(ht, item);
+	return (1);
+}
+
+/**
+ * sorted_list_add - add an item to the sorted list
+ * @ht: hash table
+ * @item: item to add
+ */
+void sorted_list_add(shash_table_t *ht, shash_node_t *item)
+{
+	shash_node_t *current;
+
 	if (ht->shead == NULL)
 	{
 		ht->shead = item;
@@ -96,7 +109,6 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		current->snext->sprev = item;
 		current->snext = item;
 	}
-	return (1);
 }
 
 /**
