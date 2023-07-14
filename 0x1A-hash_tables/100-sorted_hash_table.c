@@ -181,6 +181,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 	if (!ht)
 		return;
 	current = ht->stail;
+	printf("{");
 	while (current)
 	{
 		printf("'%s': '%s'", current->key, current->value);
@@ -210,7 +211,5 @@ void shash_table_delete(shash_table_t *ht)
 			free(item);
 		}
 	free(ht->array);
-	ht->shead = NULL;
-	ht->stail = NULL;
 	free(ht);
 }
