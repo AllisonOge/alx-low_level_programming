@@ -4,7 +4,7 @@
 
 /**
  * hash_table_get - retrieves a value associated with a key
- * @ht: hast table
+ * @ht: hash table
  * @key: key
  *
  * Return: value of the associated key or NULL if key couldn't be found

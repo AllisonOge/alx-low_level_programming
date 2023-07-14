@@ -67,6 +67,7 @@ typedef struct shash_table_s
 	shash_node_t *shead;
 	shash_node_t *stail;
 } shash_table_t;
+
 /* Functions */
 extern unsigned long int hash_djb2(const unsigned char *str);
 hash_table_t *hash_table_create(unsigned long int size);
