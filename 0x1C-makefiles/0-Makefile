@@ -1,0 +1,9 @@
+
+school:main.o school.o
+	gcc main.o school.o -o school
+
+%.o:%.c
+	gcc -Wall -Werror -Wextra -std=gnu89 -pedantic -c $<
+
+clean:
+	rm -rf *.o
