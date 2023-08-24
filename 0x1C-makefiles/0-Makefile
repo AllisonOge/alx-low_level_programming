@@ -1,12 +1,4 @@
 all:school
 
-school:main.o school.o
-	gcc main.o school.o -o school
-main.o:main.c
-	gcc -Wall -Werror -Wextra -std=gnu89 -pedantic -c main.c
-
-school.o:school.c
-	gcc -Wall -Werror -Wextra -std=gnu89 -pedantic -c school.c
-
-clean:
-	rm -rf *.o
+school:main.c school.c
+	gcc main.c school.c -o school
