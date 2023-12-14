@@ -3,7 +3,7 @@
 
 
 /**
- * binary_search_recursive - recursive binary search
+ * binary_search_iterative - iterative binary search
  * @array: pointer to array of integers
  * @low: lower index
  * @high: higher index
@@ -11,7 +11,7 @@
  *
  * Return: index of the value found otherwise -1
  */
-int binary_search_recursive(int *array, int low, int high, int value)
+int binary_search_iterative(int *array, int low, int high, int value)
 {
 	int i;
 	int mid;
@@ -61,6 +61,6 @@ int exponential_search(int *array, size_t size, int value)
 	}
 	printf("Value found between indexes [%d] and [%d]\n",
 		   bound / 2, min_(bound + 1, (int)size - 1));
-	return (binary_search_recursive(array, bound / 2,
+	return (binary_search_iterative(array, bound / 2,
 			min_(bound + 1, (int)size - 1), value));
 }
