@@ -1,7 +1,6 @@
 #include <math.h>
 #include <stdio.h>
 #include "search_algos.h"
-#define min_(a, b) ((a) < (b) ? (a) : (b))
 
 
 /**
